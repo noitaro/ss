@@ -1,0 +1,115 @@
+<html>
+
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.js"></script>
+  <script>
+    window.onload = function () {
+      var mermaidAPI = mermaid.mermaidAPI;
+
+      var config = {
+        startOnLoad: false,
+        htmlLabels: true,
+        callback: function (id) {
+          console.log(id, ' rendered');
+        },
+        flowchart: {
+          useMaxWidth: false,
+        }
+      };
+      mermaid.initialize(config);
+
+      var element = document.getElementById("app");
+      var insertSvg = function (svgCode, bindFunctions) {
+        element.innerHTML = svgCode;
+      };
+      var graphDefinition = `
+graph LR
+
+S6(<img src='./未加工のクリッター合金.jpg' width='30' height='30' />未加工のクリッター合金)
+S7(<img src='./アルマニウム板.jpg' width='30' height='30' />アルマニウム板)
+S8(<img src='./未加工のエビルストーン.jpg' width='30' height='30' />未加工のエビルストーン)
+S9(<img src='./未加工のダマスカス鉱石.jpg' width='30' height='30' />未加工のダマスカス鉱石)
+S10(<img src='./未加工のブラスト金属.jpg' width='30' height='30' />未加工のブラスト金属)
+S11(<img src='./未加工のミスリル鉱石.jpg' width='30' height='30' />未加工のミスリル鉱石)
+S6S1(クリッター合金)
+S7S1(アルマニウム合金)
+S8S1(エビルストーン)
+S9S1(ダマスカス鉱石)
+S10S1(ブラスト金属)
+S11S1(ミスリル鉱石)
+
+S6 --> S6S1
+S7 --> S7S1
+S8 --> S8S1
+S9 --> S9S1
+S10 --> S10S1
+S11 --> S11S1
+
+H1(オリジナルシルク)
+H1S1(シルク)
+H1S2(ダイフラワー)
+H2(丈夫な絹布)
+H2S1(絹布)
+H2S2(弾力ビーンズ)
+H3(厚手の帆布)
+H3S1(帆布)
+H3S2(アイアン草)
+H4(メタルな布)
+H4S1(細い金属ワイヤー)
+H4S2(ロット果実)
+H5(キメラの皮革)
+H5S1(皮革防腐剤)
+H5S2(幻獣の実)
+H6(名匠の二重織り)
+H6S1(平織りの布)
+H6S2(ツキヨ草)
+
+subgraph 裁縫
+H1H1(ミラージュ 頭 衣装<br/>獣神の民 頭 衣装)
+H2H1(王室の騎士 頭 衣装<br/>メカナイト 頭 衣装)
+H3H1(近衛兵長 頭 衣装<br/>ジャッジメント 頭 衣装)
+H4H1(騎士団長 頭 衣装)
+H5H1(スーパーレンジャー 頭 衣装)
+H6H1(遊牧民 頭 衣装)
+end
+
+H1S1 --> H1
+H1S2 --> H1
+H2S1 --> H2
+H2S2 --> H2
+H3S1 --> H3
+H3S2 --> H3
+H4S1 --> H4
+H4S2 --> H4
+H5S1 --> H5
+H5S2 --> H5
+H6S1 --> H6
+H6S2 --> H6
+
+H1 --> H1H1
+S6S1 --> H1H1
+H2 --> H2H1
+S7S1 --> H2H1
+H3 --> H3H1
+S8S1 --> H3H1
+H4 --> H4H1
+S9S1 --> H4H1
+H5 --> H5H1
+S10S1 --> H5H1
+H6 --> H6H1
+S11S1 --> H6H1
+
+    `;
+
+      var graph = mermaidAPI.render("mermaid", graphDefinition, insertSvg);
+    };
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+</body>
+
+</html>

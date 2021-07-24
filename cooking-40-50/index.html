@@ -1,0 +1,105 @@
+<html>
+
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.js"></script>
+  <script>
+    window.onload = function () {
+      var mermaidAPI = mermaid.mermaidAPI;
+
+      var config = {
+        startOnLoad: false,
+        htmlLabels: true,
+        callback: function (id) {
+          console.log(id, ' rendered');
+        },
+        flowchart: {
+          useMaxWidth: false,
+        }
+      };
+      mermaid.initialize(config);
+
+      var element = document.getElementById("app");
+      var insertSvg = function (svgCode, bindFunctions) {
+        element.innerHTML = svgCode;
+      };
+      var graphDefinition = `
+graph LR
+
+subgraph 釣り
+S1(<img src='./マーブルスネークフィッシュ.jpg' width='30' height='30' />マーブルスネークフィッシュ)
+S2(<img src='./ファッティーソードフィッシュ.jpg' width='30' height='30' />ファッティーソードフィッシュ)
+S1S1(スネークフィッシュの骨)
+S1S2(ソードフィッシュの切り身)
+S2S1(ホワイトフィッシュの鱗粉)
+S2S2(魚の脂身)
+end
+
+subgraph 植物
+S3(<img src='./ストロベリーフラワー.jpg' width='30' height='30' />ストロベリーフラワー)
+S4(<img src='./泥つきミニシロナ.jpg' width='30' height='30' />泥つきミニシロナ)
+S5(<img src='./イエロープルーン.jpg' width='30' height='30' />イエロープルーン)
+S6(<img src='./バタフラワー.jpg' width='30' height='30' />バタフラワー)
+S3S1(ブルースカイフラワー)
+S3S2(フレイムフラワー)
+S4S1(ホウサイ)
+S4S2(キュウサイ)
+S5S1(ドリームフルーツ)
+S5S2(キャラメルカカオ)
+S6S1(アールハーブ)
+S6S2(キャロット草)
+end
+
+subgraph 料理
+R1(<img src='./未鑑定の冷製スープ.jpg' width='30' height='30' />未鑑定の冷製スープ)
+R2(<img src='./未鑑定の星界握りずし.jpg' width='30' height='30' />未鑑定の星界握りずし)
+R3(<img src='./未鑑定のシーフード焼き.jpg' width='30' height='30' />未鑑定のシーフード焼き)
+R4(<img src='./未鑑定のフィッシュフライ丼.jpg' width='30' height='30' />未鑑定のフィッシュフライ丼)
+R5(<img src='./未鑑定のスターハーブティー.jpg' width='30' height='30' />未鑑定のスターハーブティー)
+R6(<img src='./未鑑定のボルケーノビール.jpg' width='30' height='30' />未鑑定のボルケーノビール)
+R7(<img src='./未鑑定のプラフライ.jpg' width='30' height='30' />未鑑定のプラフライ)
+R8(<img src='./未鑑定の星界野菜炒め.jpg' width='30' height='30' />未鑑定の星界野菜炒め)
+R9(<img src='./未鑑定のレクイエムジュース.jpg' width='30' height='30' />未鑑定のレクイエムジュース)
+R10(<img src='./未鑑定のキャラメルプリン.jpg' width='30' height='30' />未鑑定のキャラメルプリン)
+R11(<img src='./未鑑定のロイヤルミルクティー.jpg' width='30' height='30' />未鑑定のロイヤルミルクティー)
+R12(<img src='./未鑑定の星界団子スープ.jpg' width='30' height='30' />未鑑定の星界団子スープ)
+end
+
+S1 --> S1S1
+S1 --> S1S2
+S2 --> S2S1
+S2 --> S2S2
+S3 --> S3S1
+S3 --> S3S2
+S4 --> S4S1
+S4 --> S4S2
+S5 --> S5S1
+S5 --> S5S2
+S6 --> S6S1
+S6 --> S6S2
+S1S1 --> R1
+S1S2 --> R2
+S2S1 --> R3
+S2S2 --> R4
+S3S1 --> R5
+S3S2 --> R6
+S4S1 --> R7
+S4S2 --> R8
+S5S1 --> R9
+S5S2 --> R10
+S6S1 --> R11
+S6S2 --> R12
+
+    `;
+
+      var graph = mermaidAPI.render("mermaid", graphDefinition, insertSvg);
+    };
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+</body>
+
+</html>

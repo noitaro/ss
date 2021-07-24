@@ -1,0 +1,96 @@
+<html>
+
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.js"></script>
+  <script>
+    window.onload = function () {
+      var mermaidAPI = mermaid.mermaidAPI;
+
+      var config = {
+        startOnLoad: false,
+        htmlLabels: true,
+        callback: function (id) {
+          console.log(id, ' rendered');
+        },
+        flowchart: {
+          useMaxWidth: false,
+        }
+      };
+      mermaid.initialize(config);
+
+      var element = document.getElementById("app");
+      var insertSvg = function (svgCode, bindFunctions) {
+        element.innerHTML = svgCode;
+      };
+      var graphDefinition = `
+graph LR
+
+subgraph 釣り
+S1(<img src='./フォレストシャーモン.jpg' width='30' height='30' />フォレストシャーモン)
+S2(<img src='./ブロードホワイトフィッシュ.jpg' width='30' height='30' />ブロードホワイトフィッシュ)
+S1S1(シャーモンの皮付き切り身)
+S1S2(シャーモンの背骨)
+S2S1(ホワイトフィッシュの鱗粉)
+S2S2(銀色の魚の切り身)
+end
+
+subgraph 植物
+S3(<img src='./アーレインキノコ.jpg' width='30' height='30' />アーレインキノコ)
+S4(<img src='./グリーンパンプキン.jpg' width='30' height='30' />グリーンパンプキン)
+S5(<img src='./強靭まつぼっくり.jpg' width='30' height='30' />強靭まつぼっくり)
+S3S1(ナイトグロウマッシュ)
+S3S2(フラワーマッシュ)
+S4S1(紫美人)
+S4S2(フレッシュメロニー)
+S5S1(甘いまつぼっくり)
+S5S2(カリカリナッツ)
+end
+
+subgraph 料理
+R1(<img src='./未鑑定の焼き魚定食.jpg' width='30' height='30' />未鑑定の焼き魚定食)
+R2(<img src='./未鑑定のジャングルポタージュ.jpg' width='30' height='30' />未鑑定のジャングルポタージュ)
+R3(<img src='./未鑑定の豪快焼酎.jpg' width='30' height='30' />未鑑定の豪快焼酎)
+R4(<img src='./未鑑定のフィッマッシュスープ.jpg' width='30' height='30' />未鑑定のフィッマッシュスープ)
+R5(<img src='./未鑑定の夜光サラダ.jpg' width='30' height='30' />未鑑定の夜光サラダ)
+R6(<img src='./未鑑定のキノコと肉の串焼き.jpg' width='30' height='30' />未鑑定のキノコと肉の串焼き)
+R7(<img src='./未鑑定のフルーツウィスキー.jpg' width='30' height='30' />未鑑定のフルーツウィスキー)
+R8(<img src='./未鑑定の瓜のシロップ漬け.jpg' width='30' height='30' />未鑑定の瓜のシロップ漬け)
+R9(<img src='./未鑑定のカフェモカ.jpg' width='30' height='30' />未鑑定のカフェモカ)
+R10(<img src='./未鑑定のナッツパン.jpg' width='30' height='30' />未鑑定のナッツパン)
+end
+
+S1 --> S1S1
+S1 --> S1S2
+S2 --> S2S1
+S2 --> S2S2
+S3 --> S3S1
+S3 --> S3S2
+S4 --> S4S1
+S4 --> S4S2
+S5 --> S5S1
+S5 --> S5S2
+S1S1 --> R1
+S1S2 --> R2
+S2S1 --> R3
+S2S2 --> R4
+S3S1 --> R5
+S3S2 --> R6
+S4S1 --> R7
+S4S2 --> R8
+S5S1 --> R9
+S5S2 --> R10
+
+    `;
+
+      var graph = mermaidAPI.render("mermaid", graphDefinition, insertSvg);
+    };
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+</body>
+
+</html>
